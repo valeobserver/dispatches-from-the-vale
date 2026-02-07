@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Log</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --text-primary: #e8e8e8;
+            --text-secondary: #9a9a9a;
+            --accent: #ff4d1f;
+            --border: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Crimson Pro', serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 2px solid var(--accent);
+            padding: 40px 0;
+            margin-bottom: 80px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-primary);
+        }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.3s forwards;
+        }
+
+        .section-header::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            display: block;
+        }
+
+        .section-header h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        /* Entries Grid */
+        .entries {
+            display: grid;
+            gap: 80px;
+            margin-bottom: 120px;
+        }
+
+        .entry {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.7s ease-out forwards;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 60px;
+        }
+
+        .entry:nth-child(1) { animation-delay: 0.4s; }
+        .entry:nth-child(2) { animation-delay: 0.5s; }
+        .entry:nth-child(3) { animation-delay: 0.6s; }
+
+        .entry:hover {
+            transform: translateX(8px);
+        }
+
+        .entry:hover .entry-title {
+            color: var(--accent);
+        }
+
+        /* Entry Meta */
+        .entry-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        .entry-date,
+        .entry-location,
+        .entry-id {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .entry-location::before,
+        .entry-id::before {
+            content: '·';
+            color: var(--accent);
+        }
+
+        /* Entry Title */
+        .entry-title {
+            font-size: 42px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        /* Entry Tags */
+        .entry-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding: 6px 12px;
+            border: 1px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            header {
+                padding: 30px 0;
+                margin-bottom: 60px;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .entries {
+                gap: 60px;
+                margin-bottom: 80px;
+            }
+
+            .entry {
+                padding-bottom: 40px;
+            }
+
+            .entry-title {
+                font-size: 32px;
+            }
+
+            .entry-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .entry-location::before,
+            .entry-id::before {
+                content: '';
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Field Log</h1>
+        </header>
+
+        <main>
+            <div class="section-header">
+                <h2>Recent Entries</h2>
+            </div>
+
+            <div class="entries">
+                <article class="entry">
+                    <div class="entry-meta">
+                        <span class="entry-date">2026.01.19</span>
+                        <span class="entry-location">NYC</span>
+                        <span class="entry-id">FL-0002</span>
+                    </div>
+                    <h3 class="entry-title">On Prediction Markets</h3>
+                    <div class="entry-tags">
+                        <span class="tag">Markets</span>
+                        <span class="tag">Systems</span>
+                        <span class="tag">Edge</span>
+                    </div>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-meta">
+                        <span class="entry-date">2026.01.16</span>
+                        <span class="entry-location">NYC</span>
+                        <span class="entry-id">FL-0001</span>
+                    </div>
+                    <h3 class="entry-title">Working Deductions</h3>
+                    <div class="entry-tags">
+                        <span class="tag">Markets</span>
+                        <span class="tag">Power</span>
+                        <span class="tag">Infrastructure</span>
+                        <span class="tag">Systems</span>
+                    </div>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-meta">
+                        <span class="entry-date">2026.01.12</span>
+                        <span class="entry-location">BOS</span>
+                        <span class="entry-id">FL-0000</span>
+                    </div>
+                    <h3 class="entry-title">Initial Observations</h3>
+                    <div class="entry-tags">
+                        <span class="tag">Methods</span>
+                        <span class="tag">Frameworks</span>
+                        <span class="tag">Theory</span>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Add click handlers for entries
+        document.querySelectorAll('.entry').forEach(entry => {
+            entry.addEventListener('click', function() {
+                // You can add navigation logic here
+                console.log('Entry clicked:', this.querySelector('.entry-title').textContent);
+            });
+        });
+
+        // Add smooth scroll behavior
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
