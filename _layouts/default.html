@@ -11,41 +11,32 @@
 </head>
 <body>
 
-<div class="sidebar" id="sidebar">
-        <div class="sidebar-inner">
-            <!-- Optional close button inside sidebar -->
-            <button class="close-sidebar" aria-label="Close menu">×</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">≡</button>
+    
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+        <button class="close-sidebar" aria-label="Close menu">×</button>
 
-            <div class="sidebar-header">
-                <h2 class="sidebar-title">
-                    <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-                </h2>
-                <p class="sidebar-subtitle">observations on systems, markets, and complexity</p>
-            </div>
-
-            <nav>
-                <ul>
-                    <li><a href="{{ '/' | relative_url }}">Home</a></li>
-                    <li><a href="/archive">Archive</a></li>
-                    <li><a href="/about">About</a></li>
-                    <!-- add more if needed -->
-                </ul>
-            </nav>
-
-            <div class="social-links">
-                <!-- your existing social links -->
-            </div>
-
-            <div class="copyright">
-                TW GH<br>
-                © {{ 'now' | date: "%Y" }} Lucian Vale. All rights reserved.
-            </div>
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">
+                <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+            </h2>
+            <p class="sidebar-subtitle">observations on systems, markets, and complexity</p>
         </div>
-    </div>
 
-        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
-            MENU
-        </button>
+        <nav>
+            <ul>
+                <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                <li><a href="/archive/">Archive</a></li>
+                <li><a href="/about/">About</a></li>
+            </ul>
+        </nav>
+
+        <!-- your .social-links and .copyright here -->
+        <div class="social-links">…</div>
+        <div class="copyright">TW GH<br>© {{ 'now' | date: "%Y" }} Lucian Vale. All rights reserved.</div>
+    </div>
+</nav>
 
         <main class="main-content">
             <div class="container">
