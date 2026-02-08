@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<article>
+  <div class="article-header">
+    <div class="article-meta">
+      <span class="article-date">{{ page.date | date: "%Y.%m.%d" }}</span>
+      {% if page.location %}
+      <span class="article-location">{{ page.location }}</span>
+      {% endif %}
+      {% if page.id %}
+      <span class="article-id">{{ page.id }}</span>
+      {% endif %}
+      {% if page.reading_time %}
+      <span class="article-read-time">{{ page.reading_time }} min read</span>
+      {% endif %}
+    </div>
+
+    <h1 class="article-title">{{ page.title }}</h1>
+
+    {% if page.tags %}
+    <div class="article-tags">
+      {% for tag in page.tags %}
+      <span class="tag">{{ tag | upcase }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="article-content">
+    {{ content }}
+  </div>
+
+  <a href="/" class="back-link">← Back to all dispatches</a>
+</article>
