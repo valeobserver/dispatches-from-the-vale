@@ -249,6 +249,12 @@
             .article-title { font-size: 1.75rem; }
             .post-title { font-size: 1.3rem; }
         }
+
+        .location-marker {
+            color: var(--accent);
+            font-size: 0.75rem;
+            margin-right: 0.35rem;
+        }
     </style>
 </head>
 <body>
@@ -299,7 +305,7 @@
         <div class="article-meta">
           <span class="article-date">{{ page.date | date: "%Y.%m.%d" }}</span>
           {% if page.location %}
-          <span class="article-location"> · {{ page.location }}</span>
+          <span class="article-location"><span class="location-marker">▸</span> {{ page.location }}</span>
           {% endif %}
           {% if page.id %}
           <span class="article-id"> {{ page.id }}</span>
