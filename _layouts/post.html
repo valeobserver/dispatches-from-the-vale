@@ -1,38 +1,184 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dispatches from the Vale — {{ page.title }}</title>
 
-<article>
-  <div class="article-header">
-    <div class="article-meta">
-      <span class="article-date">{{ page.date | date: "%Y.%m.%d" }}</span>
-      {% if page.location %}
-        <span class="article-location">
-          <span class="location-marker">▸</span> {{ page.location }}
-        </span>
-      {% endif %}
-      {% if page.id %}
-        <span class="article-id"> {{ page.id }}</span>
-      {% endif %}
-      {% if page.reading_time %}
-        <span class="article-read-time"> {{ page.reading_time }} min read</span>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg:           #0a0a0a;
+            --fg:           #ffffff;
+            --fg-dim:       #cccccc;
+            --accent:       #00d4ff;
+            --border:       #1a2a33;
+            --mono:         'IBM Plex Mono', monospace;
+            --sans:         'IBM Plex Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { font-size: 15px; }
+
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--sans);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            border-bottom: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 100;
+        }
+
+        .site-title {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--fg);
+            text-decoration: none;
+        }
+
+        .site-title:hover {
+            color: var(--accent);
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+        }
+
+        .article-header {
+            margin-bottom: 3.5rem;
+            padding-bottom: 2.2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-meta {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--fg-dim);
+            margin-bottom: 1.6rem;
+            display: flex;
+            gap: 1.6rem;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: 0.85;
+        }
+
+        .location-marker {
+            color: var(--accent);
+            font-size: 0.75rem;
+            margin-right: 0.35rem;
+        }
+
+        .article-location {
+            display: flex;
+            align-items: center;
+        }
+
+        .article-title {
+            font-family: var(--sans);
+            font-size: 2.1rem;
+            font-weight: 500;
+            line-height: 1.28;
+            margin-bottom: 1.8rem;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.2rem;
+        }
+
+        .article-content {
+            font-size: 1.08rem;
+            line-height: 1.78;
+            color: var(--fg);
+        }
+
+        .article-content p {
+            margin-bottom: 1.6rem;
+        }
+
+        .article-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 4rem;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--fg-dim);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/" class="site-title">Dispatches from the Vale</a>
+</header>
+
+<main>
+  <article>
+    <div class="article-header">
+      <div class="article-meta">
+        <span class="article-date">{{ page.date | date: "%Y.%m.%d" }}</span>
+        {% if page.location %}
+          <span class="article-location">
+            <span class="location-marker">▸</span> {{ page.location }}
+          </span>
+        {% endif %}
+        {% if page.id %}
+          <span class="article-id"> {{ page.id }}</span>
+        {% endif %}
+        {% if page.reading_time %}
+          <span class="article-read-time"> {{ page.reading_time }} min read</span>
+        {% endif %}
+      </div>
+
+      <h1 class="article-title">{{ page.title }}</h1>
+
+      {% if page.tags %}
+      <div class="article-tags">
+        {% for tag in page.tags %}
+          <span class="tag">{{ tag | upcase }}</span>
+        {% endfor %}
+      </div>
       {% endif %}
     </div>
 
-    <h1 class="article-title">{{ page.title }}</h1>
-
-    {% if page.tags %}
-    <div class="article-tags">
-      {% for tag in page.tags %}
-        <span class="tag">{{ tag | upcase }}</span>
-      {% endfor %}
+    <div class="article-content">
+      {{ content }}
     </div>
-    {% endif %}
-  </div>
 
-  <div class="article-content">
-    {{ content }}
-  </div>
+    <a href="/" class="back-link">← Back to all dispatches</a>
+  </article>
+</main>
 
-  <a href="/" class="back-link">← Back to all dispatches</a>
-</article>
+</body>
+</html>
