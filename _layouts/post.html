@@ -150,19 +150,23 @@
   <article>
     <div class="article-header">
       <div class="article-meta">
-        <span class="article-date">{{ page.date | date: "%Y.%m.%d" }}</span>
-        {% if page.location %}
-          <span class="article-location">
-            <span class="location-marker">▸</span> {{ page.location }}
-          </span>
-        {% endif %}
+          <span class="article-date">{{ page.date | date: "%Y.%m.%d" }}</span>
+          {% if page.location %}
+            <span class="article-location">
+              <span class="location-marker">▸</span> {{ page.location }}
+            </span>
+      {% endif %}
+      <span class="article-id">
         {% if page.id %}
-          <span class="article-id">{{ page.id }}</span>
+          {{ page.id }}
+        {% else %}
+          [NO ID SET IN FRONT MATTER]
         {% endif %}
-        {% if page.reading_time %}
-          <span class="article-read-time">{{ page.reading_time }} min read</span>
-        {% endif %}
-      </div>
+  </span>
+  {% if page.reading_time %}
+    <span class="article-read-time"> {{ page.reading_time }} min read</span>
+  {% endif %}
+</div>
 
       <h1 class="article-title">{{ page.title }}</h1>
 
