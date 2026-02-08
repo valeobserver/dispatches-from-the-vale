@@ -36,7 +36,6 @@
             min-height: 100vh;
         }
 
-        /* Header */
         header {
             border-bottom: 4px solid var(--accent);
             padding: 1.5rem 2rem;
@@ -60,14 +59,13 @@
             color: var(--accent);
         }
 
-        /* Main content */
         main {
             max-width: 760px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
 
-        /* ==================== HOMEPAGE (Recent Entries) ==================== */
+        /* Homepage list */
         .posts-header {
             font-family: var(--mono);
             font-size: 0.65rem;
@@ -106,6 +104,21 @@
             align-items: center;
             gap: 1.1rem;
             opacity: 0.75;
+        }
+
+        .location-marker {
+            color: var(--accent);
+            font-size: 0.75rem;
+            margin-right: 0.35rem;
+        }
+
+        .post-location {
+            display: flex;
+            align-items: center;
+        }
+
+        .post-date {
+            letter-spacing: 0.05em;
         }
 
         .post-title {
@@ -149,7 +162,7 @@
             margin: 2.2rem 0 0;
         }
 
-        /* ==================== SINGLE POST ==================== */
+        /* Single post */
         .article-header {
             margin-bottom: 3.5rem;
             padding-bottom: 2.2rem;
@@ -171,13 +184,6 @@
         .article-location {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-        }
-
-        .article-location::before {
-            content: '▸';
-            font-size: 0.65rem;
-            color: var(--accent);
         }
 
         .article-title {
@@ -249,12 +255,6 @@
             .article-title { font-size: 1.75rem; }
             .post-title { font-size: 1.3rem; }
         }
-
-        .location-marker {
-            color: var(--accent);
-            font-size: 0.75rem;
-            margin-right: 0.35rem;
-        }
     </style>
 </head>
 <body>
@@ -274,7 +274,9 @@
         <div class="post-meta">
           <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
           {% if post.location %}
-            <span class="post-location"> · {{ post.location }}</span>
+            <span class="post-location">
+              <span class="location-marker">▸</span> {{ post.location }}
+            </span>
           {% endif %}
           {% if post.id %}
             <span class="post-id"> {{ post.id }}</span>
@@ -305,13 +307,15 @@
         <div class="article-meta">
           <span class="article-date">{{ page.date | date: "%Y.%m.%d" }}</span>
           {% if page.location %}
-          <span class="article-location"><span class="location-marker">▸</span> {{ page.location }}</span>
+            <span class="article-location">
+              <span class="location-marker">▸</span> {{ page.location }}
+            </span>
           {% endif %}
           {% if page.id %}
-          <span class="article-id"> {{ page.id }}</span>
+            <span class="article-id"> {{ page.id }}</span>
           {% endif %}
           {% if page.reading_time %}
-          <span class="article-read-time"> {{ page.reading_time }} min read</span>
+            <span class="article-read-time"> {{ page.reading_time }} min read</span>
           {% endif %}
         </div>
 
@@ -320,7 +324,7 @@
         {% if page.tags %}
         <div class="article-tags">
           {% for tag in page.tags %}
-          <span class="tag">{{ tag | upcase }}</span>
+            <span class="tag">{{ tag | upcase }}</span>
           {% endfor %}
         </div>
         {% endif %}
