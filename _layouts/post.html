@@ -156,9 +156,11 @@
             <span class="location-marker">▸</span> {{ page.location }}
           </span>
         {% endif %}
-        {% if page.id %}
-          <span class="article-id"> {{ page.id }}</span>
+
+        {% if post.dispatch_id %}
+          <span class="post-dispatch">Dispatch-{{ post.dispatch_id }}</span>
         {% endif %}
+
         {% if page.reading_time %}
           <span class="article-read-time"> {{ page.reading_time }} min read</span>
         {% endif %}
