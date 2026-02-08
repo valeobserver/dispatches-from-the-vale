@@ -1,21 +1,41 @@
-// Mobile menu toggle
+// Menu toggle – works on all devices
 const menuToggle = document.getElementById('menuToggle');
-const sidebar = document.getElementById('sidebar');
+const sidebar    = document.getElementById('sidebar');
+const closeBtn   = document.querySelector('.close-sidebar');
 
 if (menuToggle && sidebar) {
-    menuToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
+    function openMenu() {
+        sidebar.classList.add('active');
+        document.body.classList.add('sidebar-open');
+    }
+
+    function closeMenu() {
+        sidebar.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeMenu);
+    }
+
+    // Click outside to close
+    document.addEventListener('click', (e) => {
+        if (sidebar.classList.contains('active') &&
+            !sidebar.contains(e.target) &&
+            !menuToggle.contains(e.target)) {
+            closeMenu();
+        }
     });
 
-    // Close sidebar when clicking outside on mobile
-    document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 1024) {
-            if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-                sidebar.classList.remove('active');
-            }
+    // ESC key to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+            closeMenu();
         }
     });
 }
 
-// Smooth scroll behavior
+// Keep your smooth scroll
 document.documentElement.style.scrollBehavior = 'smooth';
