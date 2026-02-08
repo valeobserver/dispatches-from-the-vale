@@ -11,30 +11,37 @@
 </head>
 <body>
 
-    <div class="layout">
-        <aside class="sidebar" id="sidebar">
+<div class="sidebar" id="sidebar">
+        <div class="sidebar-inner">
+            <!-- Optional close button inside sidebar -->
+            <button class="close-sidebar" aria-label="Close menu">×</button>
+
             <div class="sidebar-header">
-                <h2 class="sidebar-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h2>
-                <p class="sidebar-subtitle">{{ site.description }}</p>
+                <h2 class="sidebar-title">
+                    <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+                </h2>
+                <p class="sidebar-subtitle">observations on systems, markets, and complexity</p>
             </div>
 
             <nav>
                 <ul>
                     <li><a href="{{ '/' | relative_url }}">Home</a></li>
-                    <li><a href="{{ '/archive' | relative_url }}">Archive</a></li>
-                    <li><a href="{{ '/about' | relative_url }}">About</a></li>
+                    <li><a href="/archive">Archive</a></li>
+                    <li><a href="/about">About</a></li>
+                    <!-- add more if needed -->
                 </ul>
             </nav>
 
             <div class="social-links">
-                <a href="https://twitter.com/valeobserver" aria-label="Twitter">TW</a>
-                <a href="https://github.com/yourusername" aria-label="GitHub">GH</a>
+                <!-- your existing social links -->
             </div>
 
             <div class="copyright">
-                © 2026 Lucian Vale. All rights reserved.
+                TW GH<br>
+                © {{ 'now' | date: "%Y" }} Lucian Vale. All rights reserved.
             </div>
-        </aside>
+        </div>
+    </div>
 
         <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
             MENU
