@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h2>
+                <p class="sidebar-subtitle">{{ site.description }}</p>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                    <li><a href="{{ '/archive' | relative_url }}">Archive</a></li>
+                    <li><a href="{{ '/about' | relative_url }}">About</a></li>
+                </ul>
+            </nav>
+
+            <div class="social-links">
+                <a href="https://twitter.com/valeobserver" aria-label="Twitter">TW</a>
+                <a href="https://github.com/yourusername" aria-label="GitHub">GH</a>
+            </div>
+
+            <div class="copyright">
+                © 2026 Lucian Vale. All rights reserved.
+            </div>
+        </aside>
+
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            MENU
+        </button>
+
+        <main class="main-content">
+            <div class="container">
+                {{ content }}
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ '/assets/js/particles.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
