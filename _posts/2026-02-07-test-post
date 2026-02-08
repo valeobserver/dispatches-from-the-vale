@@ -1,0 +1,15 @@
+---
+layout: post
+title: "Test Post"
+date: 2026-02-07
+category: meta
+tags: [example]
+reading_time: 5
+excerpt: "This is an example post to test the setup."
+---
+
+This is a test post.
+
+## Testing
+
+The blog is now working!
