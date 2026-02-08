@@ -7,13 +7,15 @@ layout: default
     <div class="article-meta">
       <span class="article-date">{{ page.date | date: "%Y.%m.%d" }}</span>
       {% if page.location %}
-      <span class="article-location">{{ page.location }}</span>
+        <span class="article-location">
+          <span class="location-marker">▸</span> {{ page.location }}
+        </span>
       {% endif %}
       {% if page.id %}
-      <span class="article-id">{{ page.id }}</span>
+        <span class="article-id"> {{ page.id }}</span>
       {% endif %}
       {% if page.reading_time %}
-      <span class="article-read-time">{{ page.reading_time }} min read</span>
+        <span class="article-read-time"> {{ page.reading_time }} min read</span>
       {% endif %}
     </div>
 
@@ -22,7 +24,7 @@ layout: default
     {% if page.tags %}
     <div class="article-tags">
       {% for tag in page.tags %}
-      <span class="tag">{{ tag | upcase }}</span>
+        <span class="tag">{{ tag | upcase }}</span>
       {% endfor %}
     </div>
     {% endif %}
