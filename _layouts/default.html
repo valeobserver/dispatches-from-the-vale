@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Dispatches from the Vale{% if page.title != "Home" %} — {{ page.title }}{% endif %}</title>
+    <title>Dispatches from the Vale</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,11 +20,7 @@
             --sans:         'IBM Plex Sans', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html { font-size: 15px; }
 
@@ -55,9 +51,7 @@
             text-decoration: none;
         }
 
-        .site-title:hover {
-            color: var(--accent);
-        }
+        .site-title:hover { color: var(--accent); }
 
         main {
             max-width: 720px;
@@ -65,7 +59,6 @@
             padding: 4rem 3rem;
         }
 
-        /* Homepage list */
         .posts-header {
             font-family: var(--mono);
             font-size: 0.65rem;
