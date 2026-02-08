@@ -175,9 +175,11 @@
             <span class="location-marker">▸</span> {{ post.location }}
           </span>
         {% endif %}
-        {% if post.id %}
-          <span class="post-id"> {{ post.id }}</span>
+          
+        {% if post.dispatch_id %}
+          <span class="post-dispatch">Dispatch-{{ post.dispatch_id }}</span>
         {% endif %}
+
       </div>
 
       <h2 class="post-title">
