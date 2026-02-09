@@ -88,6 +88,12 @@
             align-items: center;
         }
 
+        .article-dispatch {
+            display: flex;
+            align-items: center;
+            color: var(--accent);
+        }
+        
         .article-title {
             font-family: var(--sans);
             font-size: 2.1rem;
@@ -157,8 +163,8 @@
           </span>
         {% endif %}
 
-        {% if post.dispatch_id %}
-          <span class="post-dispatch">Dispatch-{{ post.dispatch_id }}</span>
+        {% if page.dispatch_id %}
+          <span class="article-dispatch">Dispatch-{{ page.dispatch_id }}</span>
         {% endif %}
 
         {% if page.reading_time %}
