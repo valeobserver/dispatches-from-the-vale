@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Example"
-date: 2026-02-07
+date: 2026-02-08
 location: LA
-dispatch_id: "0001"
+dispatch_id: "0003"
 tags: [example, test]
 ---
 
