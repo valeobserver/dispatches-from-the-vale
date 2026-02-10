@@ -5,89 +5,88 @@ permalink: /archive/
 ---
 
 <style>
-.archive-header {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--fg-dim);
-  margin-bottom: 2.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
+  .archive-header {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-bottom: 2.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
 
-.archive-header::before {
-  content: '■';
-  color: var(--accent);
-  font-size: 0.95rem;
-}
+  .archive-header::before {
+    content: '■';
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
 
-.archive-title {
-  font-size: 1.42rem;
-  font-weight: 500;
-  line-height: 1.32;
-}
+  .archive-row {
+    display: flex;
+    align-items: baseline;           /* all text sits on the same invisible baseline */
+    gap: 1.4rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--accent);
+    opacity: 0.35;
+  }
 
-.section-marker {
-  color: var(--accent);
-  font-size: 0.6rem;
-}
+  .archive-row:last-child {
+    border-bottom: none;              /* no line under the very last row */
+  }
 
-.archive-row {
-  display: flex;
-  align-items: center;
-  padding: 1.4rem 0;
-}
+  .archive-date {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    color: var(--fg);
+    white-space: nowrap;
+    min-width: 90px;                  /* keeps dates aligned */
+  }
 
-.archive-main {
-  display: flex;
-  gap: 1.2rem;
-  align-items: center;
-}
+  .archive-post-title {
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--fg);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    flex: 1;                          /* title takes remaining space */
+  }
 
-.archive-date {
-  font-family: var(--mono);
-  font-size: 0.95rem;
-  color: var(--fg);
-}
+  .archive-post-title:hover {
+    color: var(--accent);
+  }
 
-.archive-post-title {
-  font-family: var(--sans);
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--fg);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
+  .archive-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;                   /* tags don't wrap/collapse */
+  }
 
-.archive-post-title:hover {
-  color: var(--accent);
-}
-
-.archive-tags {
-  display: flex;
-  gap: 0.5rem;
-  margin-left: auto;
-}
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    background: #000000;
+    padding: 0.25rem 0.50rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(189, 71, 0, 0.3);
+  }
 </style>
 
 <div class="archive-header">All Dispatches</div>
 
 {% for post in site.posts %}
-  <hr>
-
   <div class="archive-row">
-    <div class="archive-main">
-      <span class="archive-date">
-        {{ post.date | date: "%Y.%m.%d" }}
-      </span>
-      <a class="archive-post-title" href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </div>
-
+    <span class="archive-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+    
+    <a class="archive-post-title" href="{{ post.url }}">
+      {{ post.title }}
+    </a>
+    
     {% if post.tags %}
       <div class="archive-tags">
         {% for tag in post.tags %}
@@ -97,5 +96,3 @@ permalink: /archive/
     {% endif %}
   </div>
 {% endfor %}
-
-<hr>
