@@ -36,14 +36,14 @@
 
         header {
             border-bottom: 4px solid var(--accent);
-            padding: 2rem 3rem;
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             background: var(--bg);
             z-index: 100;
         }
 
-                footer {
+         footer {
             margin-top: 5rem;
             marging-bottom: 5rem;
             padding-top: 2rem;
@@ -62,9 +62,9 @@
     
         .site-title {
             font-family: var(--mono);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.3em;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--fg);
             text-decoration: none;
@@ -98,8 +98,8 @@
         }
 
         .post {
-            margin-bottom: 3.2rem;
-            padding-bottom: 3.2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
         }
 
         .post:last-child {
@@ -242,18 +242,23 @@
       </div>
       {% endif %}
 
-      <hr>
+    {% unless forloop.last %}
+    <hr>
+    {% endunless %}
+
     </article>
     {% endfor %}
   </section>
 </main>
-    
+
+<div style="padding-bottom: 3rem;">
 <footer>
     <button id="agartha-toggle" style="font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; cursor: pointer; text-transform: uppercase; margin-top: 1rem; transition: all 0.3s;">
         Enter Agartha
     </button>
     <span class="footer-text">© 2026 Vale Observer // Nothing here is advice</span>
 </footer>
+</div>
 
 <style>
 #agartha-toggle:hover {
