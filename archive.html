@@ -26,15 +26,14 @@ permalink: /archive/
 
   .archive-row {
     display: flex;
-    align-items: baseline;           /* all text sits on the same invisible baseline */
+    align-items: baseline;           
     gap: 1.4rem;
     padding: 1.4rem 0;
-    border-bottom: 1px solid var(--accent);
-    opacity: 0.35;
+    border-bottom: 1px solid (var(--accent), 0.35);
   }
 
   .archive-row:last-child {
-    border-bottom: none;              /* no line under the very last row */
+    border-bottom: none;              
   }
 
   .archive-date {
@@ -42,7 +41,8 @@ permalink: /archive/
     font-size: 0.95rem;
     color: var(--fg);
     white-space: nowrap;
-    min-width: 90px;                  /* keeps dates aligned */
+    min-width: 90px;                  
+    opacity: 0.75
   }
 
   .archive-post-title {
@@ -52,7 +52,7 @@ permalink: /archive/
     color: var(--fg);
     text-decoration: none;
     transition: color 0.2s ease;
-    flex: 1;                          /* title takes remaining space */
+    flex: 1;                          
   }
 
   .archive-post-title:hover {
@@ -62,7 +62,7 @@ permalink: /archive/
   .archive-tags {
     display: flex;
     gap: 0.5rem;
-    flex-shrink: 0;                   /* tags don't wrap/collapse */
+    flex-shrink: 0;                
   }
 
   .tag {
