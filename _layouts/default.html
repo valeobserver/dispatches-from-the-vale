@@ -76,19 +76,20 @@
             line-height: 0.85;
             color: var(--fg);
             margin-left: -0.05em;
+            opacity: 0.9;
         }
 
-
     .hero-text {
-  font-family: 'Inter', sans-serif;    /* ← this is the missing piece */
-  font-weight: 300;
-  font-size: 1.1rem;
-  line-height: 1.9;
+  font-family: var(--mono);          /* ← critical */
+  font-weight: 400;
+  font-size: 0.95rem;                /* slightly smaller = quieter */
+  line-height: 1.85;
   color: var(--fg-dim);
-  max-width: 550px;
-  margin: 0 auto;
-  text-align: center;
-  letter-spacing: -0.01em;            /* optional — tightens it slightly like Field Log */
+  max-width: 560px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+  text-align: left;                  /* ← critical */
 }
 
     footer {
@@ -192,7 +193,6 @@
 <main>
   {% if page.url == "/" or page.url == "/index.html" %}
 
-  <!-- Need to figure out proper hero
   
   <section class="hero">
     <div class="hero-index">02</div>
@@ -200,8 +200,6 @@
       Observations written in transit. Between projects, jurisdictions, systems. No schedule. No assumed audience.
     </p>
   </section>
-  
-  -->
 
 {% endif %}
   
