@@ -1,45 +1,20 @@
 ---
 layout: default
+title: Archive
+permalink: /archive/
 ---
 
-<header>
-    <h1>{{ site.title }}</h1>
-</header>
+<section class="posts">
+  <div class="posts-header">All Dispatches</div>
 
-<section>
-    <div class="section-header">
-        <h2>All Dispatches</h2>
-    </div>
-
-    <div class="entries">
-        {% for post in site.posts %}
-        <article class="entry">
-            <div class="entry-meta">
-                <span class="entry-date">{{ post.date | date: "%d %b %Y" }}</span>
-                {% if post.reading_time %}
-                <span class="entry-read-time">{{ post.reading_time }} min read</span>
-                {% endif %}
-                {% if post.category %}
-                <span class="entry-id">[ {{ post.category }} ]</span>
-                {% endif %}
-            </div>
-            <h3 class="entry-title">
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            </h3>
-            {% if post.excerpt %}
-            <p class="entry-excerpt">
-                {{ post.excerpt | strip_html | truncatewords: 50 }}
-                <a href="{{ post.url | relative_url }}" class="read-more">Read more...</a>
-            </p>
-            {% endif %}
-            {% if post.tags %}
-            <div class="entry-tags">
-                {% for tag in post.tags %}
-                <span class="tag">{{ tag }}</span>
-                {% endfor %}
-            </div>
-            {% endif %}
-        </article>
-        {% endfor %}
-    </div>
+  {% for post in site.posts %}
+    <article class="post">
+      <div class="post-meta">
+        <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </div>
+      <hr>
+    </article>
+  {% endfor %}
 </section>
+
