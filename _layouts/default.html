@@ -142,6 +142,20 @@
       text-transform: uppercase;
     }
 
+/* Dark mode (default) */
+:root:not(.light-mode) .tag {
+  color: var(--accent);
+  background: #000000;
+  border: 1px solid rgba(var(--accent), 0.3);
+}
+
+/* Light mode (Agartha) */
+:root.light-mode .tag {
+  color: var(--fg);               /* black text */
+  background: var(--accent);      /* orange background */
+  border: 1px solid var(--accent);
+}
+    
     hr {
       border: none;
       border-top: 1px solid var(--accent);
