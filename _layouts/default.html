@@ -104,6 +104,33 @@
       header { padding: 1.5rem; }
       main { padding: 2rem 1.5rem; }
     }
+
+    .hero {
+  text-align: center;
+  padding: 6rem 2rem 8rem;
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.hero-index {
+  font-family: var(--mono);
+  font-size: 8rem;
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--fg);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.04em;
+}
+
+.hero-text {
+  font-family: var(--sans);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--fg-dim);
+}
+
   </style>
 </head>
 
@@ -114,6 +141,15 @@
 </header>
 
 <main>
+  {% if page.url == "/" or page.url == "/index.html" %}
+  <section class="hero">
+    <div class="hero-index">02</div>
+    <p class="hero-text">
+      Observations written in transit. Between projects, jurisdictions, systems. No schedule. No assumed audience.
+    </p>
+  </section>
+{% endif %}
+  
   {{ content }}
 </main>
 
