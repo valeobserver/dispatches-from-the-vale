@@ -248,14 +248,54 @@
   </section>
 </main>
 <footer>
-        <span class= "footer-text"> © 2026 Vale Observer // Nothing here is advice</span>
-    </div>
+    <span class="footer-text">© 2026 Vale Observer // Nothing here is advice</span>
+    <button id="agartha-toggle" style="font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; cursor: pointer; text-transform: uppercase; margin-top: 1rem; transition: all 0.3s;">
+        Enter Agartha
+    </button>
 </footer>
 
 <style>
-footer a:hover {
-    color: var(--accent) !important;
+#agartha-toggle:hover {
+    background: var(--accent);
+    color: var(--bg);
 }
 </style>
+
+<script>
+// Theme toggle
+const toggle = document.getElementById('agartha-toggle');
+const root = document.documentElement;
+
+// Check for saved theme preference
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'agartha') {
+    applyAgartha();
+}
+
+toggle.addEventListener('click', () => {
+    if (root.style.getPropertyValue('--bg') === '#ffffff') {
+        applySurface();
+        localStorage.setItem('theme', 'surface');
+    } else {
+        applyAgartha();
+        localStorage.setItem('theme', 'agartha');
+    }
+});
+
+function applyAgartha() {
+    root.style.setProperty('--bg', '#ffffff');
+    root.style.setProperty('--fg', '#0a0a0a');
+    root.style.setProperty('--fg-dim', '#0a0a0a');
+    toggle.textContent = 'Exit Agartha';
+}
+
+function applySurface() {
+    root.style.setProperty('--bg', '#0a0a0a');
+    root.style.setProperty('--fg', '#ffffff');
+    root.style.setProperty('--fg-dim', '#ffffff');
+    toggle.textContent = 'Enter Agartha';
+}
+</script>
+
 </body>
 </html>
