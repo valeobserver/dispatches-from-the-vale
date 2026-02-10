@@ -78,17 +78,19 @@
             margin-left: -0.05em;
         }
 
-        .hero-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            color: var(--fg-dim);
-            max-width: 550px;
-            line-height: 1.9;
-            font-weight: 300;
-            display: flex;
-            align-items: center;
-        }
-    
+
+    .hero-text {
+  font-family: 'Inter', sans-serif;    /* ← this is the missing piece */
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--fg-dim);
+  max-width: 550px;
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: -0.01em;            /* optional — tightens it slightly like Field Log */
+}
+
     footer {
       margin-top: 5rem;
       margin-bottom: 5rem;
