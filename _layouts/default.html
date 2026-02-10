@@ -132,27 +132,27 @@
       text-transform: uppercase;
     }
 
-    .tag {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.05em;
-      color: var(--accent);
-      background: #000;
-      padding: 0.25rem 0.5rem;
-      text-transform: uppercase;
-    }
+.tag {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  border-radius: 3px;
+}
 
-/* Dark mode (default) */
-:root:not(.light-mode) .tag {
+/* Dark mode (default / Surface) */
+.tag {
   color: var(--accent);
   background: #000000;
   border: 1px solid rgba(var(--accent), 0.3);
 }
 
 /* Light mode (Agartha) */
-:root.light-mode .tag {
-  color: var(--fg);               /* black text */
-  background: var(--accent);      /* orange background */
+.agartha .tag {
+  color: var(--fg);              /* black text */
+  background: var(--accent);     /* orange background */
   border: 1px solid var(--accent);
 }
     
@@ -269,16 +269,26 @@
 
 <script>
 const toggle = document.getElementById('agartha-toggle');
+const body = document.body;
 const root = document.documentElement;
 
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme === 'agartha') applyAgartha();
+// Load saved theme on page load
+const savedTheme = localStorage.getItem('theme') || 'surface'; // default to dark
+if (savedTheme === 'agartha') {
+  body.classList.add('agartha');
+  applyAgartha();
+} else {
+  body.classList.remove('agartha');
+  applySurface();
+}
 
 toggle.addEventListener('click', () => {
-  if (root.style.getPropertyValue('--bg') === '#ffffff') {
+  if (body.classList.contains('agartha')) {
+    body.classList.remove('agartha');
     applySurface();
     localStorage.setItem('theme', 'surface');
   } else {
+    body.classList.add('agartha');
     applyAgartha();
     localStorage.setItem('theme', 'agartha');
   }
@@ -294,7 +304,7 @@ function applyAgartha() {
 function applySurface() {
   root.style.setProperty('--bg', '#000000');
   root.style.setProperty('--fg', '#ffffff');
-  root.style.setProperty('--fg-dim', '#ffffff');
+  root.style.setProperty('--fg-dim', '#cccccc'); // or #ffffff if you want pure white
   toggle.textContent = 'Enter Agartha';
 }
 </script>
