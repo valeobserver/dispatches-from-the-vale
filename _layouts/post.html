@@ -4,11 +4,32 @@ layout: default
 
 <style>
 .article-header {
-  margin-bottom: 3.5rem;
+  margin-bottom: 4rem;
   padding-bottom: 2.2rem;
   border-bottom: 1px solid var(--border);
   animation: fadeIn 0.6s ease-out;
 }
+
+        .article-num {
+            font-size: 5.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            line-height: 0.85;
+            color: var(--fg);
+        }
+
+        .article-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0.3rem 0 0.1rem 0;
+        }
+  
+        article {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
 
 .article-meta {
   font-family: var(--mono);
@@ -50,14 +71,15 @@ layout: default
 }
 
 .article-content {
-  font-size: 1.08rem;
-  line-height: 1.78;
+  font-size: 0.95rem;
+  line-height: 1.85;
   color: var(--fg);
+  font-weight: 300;
   animation: fadeIn 0.6s ease-out 0.15s backwards;
 }
 
 .article-content p {
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.5rem;
 }
 
 .article-content p:last-child {
@@ -92,10 +114,12 @@ layout: default
 
 <article>
   <div class="article-header">
-    <div class="article-meta">
-      <span class="article-date">
-        {{ page.date | date: "%Y.%m.%d" }}
-      </span>
+    <div class="article-num">01</div>
+    <div class="article-info">
+      <div class="article-meta">
+        <span class="article-date">
+          {{ page.date | date: "%Y.%m.%d" }}
+        </span>
 
       {% if page.location %}
         <span class="article-location">
@@ -106,12 +130,6 @@ layout: default
       {% if page.dispatch_id %}
         <span class="article-dispatch">
           Dispatch-{{ page.dispatch_id }}
-        </span>
-      {% endif %}
-
-      {% if page.reading_time %}
-        <span class="article-read-time">
-          {{ page.reading_time }} min read
         </span>
       {% endif %}
     </div>
@@ -125,6 +143,7 @@ layout: default
         {% endfor %}
       </div>
     {% endif %}
+    </div>
   </div>
 
   <div class="article-content">
