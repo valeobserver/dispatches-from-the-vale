@@ -137,25 +137,44 @@
         .post:nth-child(1) { animation-delay: 0.1s; }
         .post:nth-child(2) { animation-delay: 0.15s; }
 
-    @media (max-width: 600px) {
-      header { padding: 1.5rem; }
-      main { padding: 2rem 1.5rem; }
-    }
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+                flex-direction: column;
+                gap: 0.25rem;
+                align-items: flex-start;
+            }
 
-.hero {
-  flex-direction: column;
-  gap: 1.5rem;
-}
+            main {
+                padding: 2rem 1.5rem;
+            }
 
-  .hero-index {
-    font-size: 4rem;
-    line-height: 1;
-}
+            .hero {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
 
+            .hero-index {
+                font-size: 4rem;
+                line-height: 1;
+            }
 
-  .hero-content {
-      padding-top: 0;
-}
+            .hero-content {
+                padding-top: 0;
+            }
+
+            .post {
+                padding: 0;
+            }
+
+            .post-image {
+                height: 200px;
+            }
+
+            .post-title {
+                font-size: 1.3rem;
+            }
+        }
 
   </style>
 </head>
