@@ -70,7 +70,7 @@ layout: default
 <section class="posts">
   <div class="posts-header">Recent Dispatches</div>
 
-  {% for post in site.posts limit: 2 %}
+  {% for post in site.posts limit: 3 %}
     <article class="post">
       <div class="post-meta">
         <span>{{ post.date | date: "%Y.%m.%d" }}</span>
