@@ -1,231 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{{ page.title }}</title>
+---
+layout: default
+---
 
-    <link rel="icon" href="{{ '/assets/favicon.ico' | relative_url }}">
+<style>
+.article-header {
+  margin-bottom: 3.5rem;
+  padding-bottom: 2.2rem;
+  border-bottom: 1px solid var(--border);
+  animation: fadeIn 0.6s ease-out;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+.article-meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--fg-dim);
+  margin-bottom: 1.6rem;
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+  opacity: 0.85;
+}
 
-    <style>
-        :root {
-            --bg:           #0a0a0a;
-            --fg:           #ffffff;
-            --fg-dim:       #ffffff;
-            --accent:       #BD4700;
-            --border:       #1a1410;
-            --mono:         'IBM Plex Mono', monospace;
-            --sans:         'IBM Plex Sans', sans-serif;
-        }
+.article-location,
+.article-dispatch {
+  display: flex;
+  align-items: center;
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+.location-marker {
+  color: var(--accent);
+  font-size: 0.75rem;
+  margin-right: 0.35rem;
+}
 
-        html { font-size: 15px; }
+.article-title {
+  font-family: var(--sans);
+  font-size: 2.1rem;
+  font-weight: 500;
+  line-height: 1.28;
+  margin-bottom: 1.8rem;
+}
 
-        body {
-            background: var(--bg);
-            color: var(--fg);
-            font-family: var(--sans);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
 
-        header {
-            border-bottom: 4px solid var(--accent);
-            padding: 1.5rem 2rem;
-            position: sticky;
-            top: 0;
-            background: var(--bg);
-            z-index: 100;
-        }
+.article-content {
+  font-size: 1.08rem;
+  line-height: 1.78;
+  color: var(--fg);
+  animation: fadeIn 0.6s ease-out 0.15s backwards;
+}
 
-        .site-title {
-            font-family: var(--mono);
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--fg);
-            text-decoration: none;
-        }
+.article-content p {
+  margin-bottom: 1.6rem;
+}
 
-        .site-title:hover { color: var(--accent); }
+.article-content p:last-child {
+  margin-bottom: 0;
+}
 
-        main {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 4rem 3rem;
-        }
+.back-link {
+  display: block;
+  margin-top: 4rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--fg-dim);
+  text-decoration: none;
+}
 
-        .article-header {
-            margin-bottom: 3.5rem;
-            padding-bottom: 2.2rem;
-            border-bottom: 1px solid var(--border);
-        }
+.back-link:hover {
+  color: var(--accent);
+}
 
-        .article-meta {
-            font-family: var(--mono);
-            font-size: 0.72rem;
-            color: var(--fg-dim);
-            margin-bottom: 1.6rem;
-            display: flex;
-            gap: 1.6rem;
-            align-items: center;
-            flex-wrap: wrap;
-            opacity: 0.85;
-        }
+@media (max-width: 600px) {
+  .article-title {
+    font-size: 1.6rem;
+  }
 
-        .location-marker {
-            color: var(--accent);
-            font-size: 0.75rem;
-            margin-right: 0.35rem;
-        }
+  .article-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+</style>
 
-        .article-location {
-            display: flex;
-            align-items: center;
-        }
+<article>
+  <div class="article-header">
+    <div class="article-meta">
+      <span class="article-date">
+        {{ page.date | date: "%Y.%m.%d" }}
+      </span>
 
-        .article-dispatch {
-            display: flex;
-            align-items: center;
-        }
-        
-        .article-title {
-            font-family: var(--sans);
-            font-size: 2.1rem;
-            font-weight: 500;
-            line-height: 1.28;
-            margin-bottom: 1.8rem;
-        }
+      {% if page.location %}
+        <span class="article-location">
+          <span class="location-marker">▸</span>{{ page.location }}
+        </span>
+      {% endif %}
 
-        .article-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 1.2rem;
-        }
+      {% if page.dispatch_id %}
+        <span class="article-dispatch">
+          Dispatch-{{ page.dispatch_id }}
+        </span>
+      {% endif %}
 
-        .tag {
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            letter-spacing: 0.06em;
-            color: var(--accent);
-            background: #000000;
-            padding: 0.25rem 0.55rem;
-            text-transform: uppercase;
-        }
+      {% if page.reading_time %}
+        <span class="article-read-time">
+          {{ page.reading_time }} min read
+        </span>
+      {% endif %}
+    </div>
 
-        .article-content {
-            font-size: 1.08rem;
-            line-height: 1.78;
-            color: var(--fg);
-        }
+    <h1 class="article-title">{{ page.title }}</h1>
 
-        .article-content p {
-            margin-bottom: 1.6rem;
-        }
-
-        .article-content p:last-child {
-            margin-bottom: 0;
-        }
-
-        .back-link {
-            display: block;
-            margin-top: 4rem;
-            font-family: var(--mono);
-            font-size: 0.8rem;
-            color: var(--fg-dim);
-            text-decoration: none;
-        }
-
-        .back-link:hover { color: var(--accent); }
-
-      /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .article-header {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .article-content {
-            animation: fadeIn 0.6s ease-out 0.15s backwards;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            header {
-                padding: 1.5rem;
-            }
-
-            article {
-                padding: 2rem 1.5rem;
-            }
-
-            .article-title {
-                font-size: 1.6rem;
-            }
-
-            .article-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.25rem;
-            }
-        }
-    
-    </style>
-</head>
-<body>
-
-<header>
-    <a href="/" class="site-title">Dispatches from the Vale</a>
-</header>
-
-<main>
-  <article>
-    <div class="article-header">
-      <div class="article-meta">
-        <span class="article-date">{{ page.date | date: "%Y.%m.%d" }}</span>
-        {% if page.location %}
-          <span class="article-location">
-            <span class="location-marker">▸</span> {{ page.location }}
-          </span>
-        {% endif %}
-
-        {% if page.dispatch_id %}
-          <span class="article-dispatch">Dispatch-{{ page.dispatch_id }}</span>
-        {% endif %}
-
-        {% if page.reading_time %}
-          <span class="article-read-time"> {{ page.reading_time }} min read</span>
-        {% endif %}
-      </div>
-
-      <h1 class="article-title">{{ page.title }}</h1>
-
-      {% if page.tags %}
+    {% if page.tags %}
       <div class="article-tags">
         {% for tag in page.tags %}
           <span class="tag">{{ tag | upcase }}</span>
         {% endfor %}
       </div>
-      {% endif %}
-    </div>
+    {% endif %}
+  </div>
 
-    <div class="article-content">
-      {{ content }}
-    </div>
+  <div class="article-content">
+    {{ content }}
+  </div>
 
-    <a href="/" class="back-link">← Back to all dispatches</a>
-  </article>
-</main>
-
-</body>
-</html>
+  <a href="/" class="back-link">← Back to all dispatches</a>
+</article>
