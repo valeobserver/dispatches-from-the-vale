@@ -1,0 +1,114 @@
+---
+layout: default
+---
+
+<style>
+.posts-header {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 2.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.posts-header::before {
+  content: '■';
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+.post {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  animation: fadeIn 0.6s ease-out backwards;
+}
+
+.post-meta {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--fg-dim);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  opacity: 0.75;
+}
+
+.post-title {
+  font-size: 1.42rem;
+  font-weight: 500;
+  line-height: 1.32;
+}
+
+.post-title a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  color: var(--accent);
+}
+
+.post-tags {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.location-marker {
+  color: var(--accent);
+  margin-right: 0.35rem;
+}
+</style>
+
+<section class="posts">
+  <div class="posts-header">Recent Dispatches</div>
+
+  {% for post in site.posts limit: 10 %}
+    <article class="post">
+      <div class="post-meta">
+        <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+
+        {% if post.location %}
+          <span>
+            <span class="location-marker">▸</span>{{ post.location }}
+          </span>
+        {% endif %}
+
+        {% if post.dispatch_id %}
+          <span>Dispatch-{{ post.dispatch_id }}</span>
+        {% endif %}
+      </div>
+
+      <h2 class="post-title">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h2>
+
+      {% if post.tags %}
+        <div class="post-tags">
+          {% for tag in post.tags %}
+            <span class="tag">{{ tag | upcase }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% unless forloop.last %}
+        <hr>
+      {% endunless %}
+    </article>
+  {% endfor %}
+
+  <div style="margin-top: 3rem; text-align: center;">
+    <a href="/archive"
+       style="font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em;
+              color: var(--fg-dim); text-decoration: none;">
+      ALL DISPATCHES →
+    </a>
+  </div>
+</section>
