@@ -69,6 +69,26 @@
             align-items: stretch;
         }
 
+.hero-index-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.hero-arrow {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.35rem; /* aligns with numeral baseline */
+  background-color: var(--accent);
+
+  -webkit-mask: url('/assets/arrow.svg') no-repeat center;
+  -webkit-mask-size: contain;
+          mask: url('/assets/arrow.svg') no-repeat center;
+          mask-size: contain;
+
+  opacity: 0.9;
+}
+    
         .hero-index {
             font-size: 5rem;
             font-family: 'Inter', sans-serif;
@@ -195,14 +215,19 @@
 
   {% assign dispatch_count = site.posts | size %}
   
-  <section class="hero">
-    <div class="hero-index">
+<section class="hero">
+  <div class="hero-index-wrapper">
+    <span class="hero-arrow"></span>
+    <span class="hero-index">
       {{ dispatch_count | prepend: "0" | slice: -2, 2 }}
-    </div>
-    <p class="hero-text">
-      Observations written in transit. Between projects, jurisdictions, systems. No schedule. No assumed audience.
-    </p>
-  </section>
+    </span>
+  </div>
+
+  <p class="hero-text">
+    Observations written in transit. Between projects, jurisdictions, systems. No schedule. No assumed audience.
+  </p>
+</section>
+
 
 {% endif %}
   
