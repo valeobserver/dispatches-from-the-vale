@@ -3,148 +3,161 @@ layout: default
 ---
 
 <style>
-.article-header {
-  margin-bottom: 4rem;
-  padding-bottom: 2.2rem;
-  border-bottom: 1px solid var(--border);
-  animation: fadeIn 0.6s ease-out;
-}
+  article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
 
-        .article-num {
-            font-size: 5.5rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            line-height: 0.85;
-            color: var(--fg);
-        }
+  .article-header {
+    margin-bottom: 5rem;
+    animation: fadeIn 0.6s ease-out;
+  }
 
-        .article-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 0.3rem 0 0.1rem 0;
-        }
-  
-        article {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
+  .article-top-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;                  /* space between number and text block */
+    margin-bottom: 1.5rem;
+  }
 
-.article-meta {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  color: var(--fg-dim);
-  margin-bottom: 1.6rem;
-  display: flex;
-  gap: 1.6rem;
-  align-items: center;
-  flex-wrap: wrap;
-  opacity: 0.85;
-}
+  .article-num {
+    font-size: 8rem;            /* large like Field Log "02" */
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    line-height: 0.85;
+    color: var(--fg);
+    letter-spacing: -0.04em;
+    opacity: 0.9;
+    flex-shrink: 0;
+  }
 
-.article-location,
-.article-dispatch {
-  display: flex;
-  align-items: center;
-}
-
-.location-marker {
-  color: var(--accent);
-  font-size: 0.75rem;
-  margin-right: 0.35rem;
-}
-
-.article-title {
-  font-family: var(--sans);
-  font-size: 2.1rem;
-  font-weight: 500;
-  line-height: 1.28;
-  margin-bottom: 1.8rem;
-}
-
-.article-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1.2rem;
-}
-
-.article-content {
-  font-size: 0.95rem;
-  line-height: 1.85;
-  color: var(--fg);
-  font-weight: 300;
-  max-width: 680px;
-  margin: 0 auto;
-  animation: fadeIn 0.6s ease-out 0.15s backwards;
-}
-
-.article-content p {
-  margin-bottom: 1.5rem;
-}
-
-.article-content p:last-child {
-  margin-bottom: 0;
-}
-
-.back-link {
-  display: block;
-  margin-top: 4rem;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--fg-dim);
-  text-decoration: none;
-}
-
-.back-link:hover {
-  color: var(--accent);
-}
-
-@media (max-width: 600px) {
-  .article-title {
-    font-size: 1.6rem;
+  .article-info {
+    flex: 1;
   }
 
   .article-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--fg-dim);
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0.85;
   }
-}
+
+  .article-location,
+  .article-dispatch {
+    display: flex;
+    align-items: center;
+  }
+
+  .location-marker {
+    color: var(--accent);
+    font-size: 0.75rem;
+    margin-right: 0.35rem;
+  }
+
+  .article-title {
+    font-family: var(--sans);
+    font-size: 2.4rem;          /* large title next to number */
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  .article-content {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--fg);
+    max-width: 680px;
+    margin: 0 auto;
+    animation: fadeIn 0.6s ease-out 0.15s backwards;
+  }
+
+  .article-content p {
+    margin-bottom: 1.6rem;
+  }
+
+  .article-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .back-link {
+    display: block;
+    margin-top: 5rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--fg-dim);
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .article-top-row {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .article-num {
+      font-size: 6rem;
+    }
+    .article-title {
+      font-size: 2rem;
+    }
+    .article-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+  }
 </style>
 
 <article>
   <div class="article-header">
-    <div class="article-num">01</div>
-    <div class="article-info">
-      <div class="article-meta">
-        <span class="article-date">
-          {{ page.date | date: "%Y.%m.%d" }}
-        </span>
+    <div class="article-top-row">
+      {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+      {% assign post_index = sorted_posts | index: page %}
+      {% assign dispatch_num = post_index | plus: 1 | prepend: "0" | slice: -2, 2 %}
+      <span class="article-num">{{ dispatch_num }}</span>
+      
+      <div class="article-info">
+        <div class="article-meta">
+          <span class="article-date">{{ page.date | date: "%Y.%m.%d" }}</span>
+          {% if page.location %}
+            <span class="article-location">
+              <span class="location-marker">▸</span>{{ page.location }}
+            </span>
+          {% endif %}
+          {% if page.id %}
+            <span class="article-dispatch">Dispatch-{{ page.id }}</span>
+          {% endif %}
+        </div>
 
-      {% if page.location %}
-        <span class="article-location">
-          <span class="location-marker">▸</span>{{ page.location }}
-        </span>
-      {% endif %}
+        <h1 class="article-title">{{ page.title }}</h1>
 
-      {% if page.dispatch_id %}
-        <span class="article-dispatch">
-          Dispatch-{{ page.dispatch_id }}
-        </span>
-      {% endif %}
-    </div>
-
-    <h1 class="article-title">{{ page.title }}</h1>
-
-    {% if page.tags %}
-      <div class="article-tags">
-        {% for tag in page.tags %}
-          <span class="tag">{{ tag | upcase }}</span>
-        {% endfor %}
+        {% if page.tags %}
+          <div class="article-tags">
+            {% for tag in page.tags %}
+              <span class="tag">{{ tag | upcase }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
       </div>
-    {% endif %}
     </div>
   </div>
 
