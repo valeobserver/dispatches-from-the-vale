@@ -187,6 +187,9 @@ layout: default
 
         <h1 class="article-title">{{ page.title }}</h1>
 
+    </div>
+  </div>
+    
         {% if page.tags %}
           <div class="article-tags">
             {% for tag in page.tags %}
@@ -195,9 +198,7 @@ layout: default
           </div>
         {% endif %}
       </div>
-    </div>
-  </div>
-
+  
   <div class="article-content">
     {{ content }}
   </div>
