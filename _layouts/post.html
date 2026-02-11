@@ -131,13 +131,7 @@ layout: default
   <div class="article-header">
     <div class="article-top-row">
 
-{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-{% for p in sorted_posts %}
-  {% if p.url == page.url %}
-    <span class="article-num">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span>
-    {% break %}
-  {% endif %}
-{% endfor %}
+<span class="article-num">{{ page.dispatch_number }}</span>
       
       <div class="article-info">
         <div class="article-meta">
