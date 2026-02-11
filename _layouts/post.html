@@ -20,9 +20,9 @@ layout: default
 
   .article-top-row {
     display: flex;
-    align-items: baseline;
+    align-items: flex-start;
     gap: 2rem;                  /* space between number and text block */
-    margin-top: 1.5rem;
+    margin-top: 0;
   }
 
   .article-num {
@@ -40,6 +40,8 @@ layout: default
             flex-direction: column;
             justify-content: space-between;
             padding: 0.3rem 0 0.1rem 0;
+            justify-content: flex-start;
+            padding-top: 0.3rem;
         }
 
   .article-meta {
